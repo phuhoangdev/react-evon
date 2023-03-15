@@ -125,9 +125,7 @@ const Card = (props) => {
             </CardTop>
             <CardFooter>
                <CardTitle>Cosmic Perspective</CardTitle>
-               <CardAmount fontSize="28px" secondary={props.secondary}>
-                  12,000 PSL
-               </CardAmount>
+               <CardAmount secondary={props.secondary}>12,000 PSL</CardAmount>
             </CardFooter>
          </CardContent>
       </StyledCard>

@@ -1,17 +1,15 @@
 import "./App.scss";
 import Card from "./components/card/Card";
+import Card2 from "./components/card/Card2";
 import CardList from "./components/card/CardList";
+import { GlobalStyles } from "./GlobalStyles";
 
 const App = () => {
    return (
       <>
+         <GlobalStyles />
          <CardList>
-            <Card secondary={true} />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            <Card2 secondary={true} />
          </CardList>
       </>
    );
