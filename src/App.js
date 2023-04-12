@@ -1,11 +1,12 @@
 import './App.scss';
+import Photos from './components/photo/Photos';
 // import CardStyled from './components/card/Card';
 // import CardStyled2 from './components/card/CardStyled2';
 // import CardList from './components/card/CardList';
 // import { GlobalStyles } from './GlobalStyles';
 // import { ThemeProvider } from 'styled-components';
 // import CardTailwind from './components/card/CardTailwind';
-import Game from './components/tictactoe/Game';
+// import Game from './components/tictactoe/Game';
 
 // const theme = {
 //    colors: {
@@ -29,7 +30,9 @@ const App = () => {
       //    <CardTailwind primary={true} fontSize="text-xl" />
       // </CardList>
 
-      <Game />
+      // <Game />
+
+      <Photos />
    );
 };
 
