@@ -1,5 +1,6 @@
 import './App.scss';
-import Photos from './components/photo/Photos';
+import HackerNews from './components/news/HackerNews';
+// import Photos from './components/photo/Photos';
 // import CardStyled from './components/card/Card';
 // import CardStyled2 from './components/card/CardStyled2';
 // import CardList from './components/card/CardList';
@@ -32,7 +33,8 @@ const App = () => {
 
       // <Game />
 
-      <Photos />
+      // <Photos />
+      <HackerNews />
    );
 };
 
