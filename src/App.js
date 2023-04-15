@@ -1,5 +1,6 @@
 import './App.scss';
-import HackerNews from './components/news/HackerNews';
+// import HackerNews from './components/news/HackerNews';
+import HackerNewsWithReducer from './components/news/HackerNewsWithReducer';
 // import Photos from './components/photo/Photos';
 // import CardStyled from './components/card/Card';
 // import CardStyled2 from './components/card/CardStyled2';
@@ -34,7 +35,8 @@ const App = () => {
       // <Game />
 
       // <Photos />
-      <HackerNews />
+      // <HackerNews />
+      <HackerNewsWithReducer />
    );
 };
 
