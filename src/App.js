@@ -1,6 +1,9 @@
 import './App.scss';
+import Tooltip from './components/tooltip/Tooltip';
+
+// import ModalApp from './components/modal/ModalApp';
 // import HackerNews from './components/news/HackerNews';
-import HackerNewsWithReducer from './components/news/HackerNewsWithReducer';
+// import HackerNewsWithReducer from './components/news/HackerNewsWithReducer';
 // import Photos from './components/photo/Photos';
 // import CardStyled from './components/card/Card';
 // import CardStyled2 from './components/card/CardStyled2';
@@ -36,7 +39,12 @@ const App = () => {
 
       // <Photos />
       // <HackerNews />
-      <HackerNewsWithReducer />
+      // <HackerNewsWithReducer />
+
+      // <ModalApp />
+      <div className="p-16 mt-16 ml-16">
+         <Tooltip text="Hover me">This is a tooltip content</Tooltip>
+      </div>
    );
 };
 
