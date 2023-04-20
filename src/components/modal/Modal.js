@@ -1,4 +1,5 @@
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 
 const Modal = ({ open = false, handleClose = () => {} }) => {
    if (typeof document === 'undefined') return <div className="modal"></div>;
@@ -19,7 +20,7 @@ const Modal = ({ open = false, handleClose = () => {} }) => {
                </label>
                <input type="text" className="w-full text-sm leading-normal bg-[#e7ecf3] rounded-lg p-4" placeholder="Enter your email" />
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 mb-5">
                <label htmlFor="password" className="text-sm cursor-pointer">
                   Password
                </label>
@@ -30,6 +31,11 @@ const Modal = ({ open = false, handleClose = () => {} }) => {
       </div>,
       document.querySelector('body'),
    );
+};
+
+Modal.propTypes = {
+   open: PropTypes.bool.isRequired,
+   handleClose: PropTypes.func.isRequired,
 };
 
 export default Modal;

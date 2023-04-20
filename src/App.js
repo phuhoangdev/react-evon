@@ -1,49 +1,44 @@
-import './App.scss';
-import Tooltip from './components/tooltip/Tooltip';
-
-// import ModalApp from './components/modal/ModalApp';
-// import HackerNews from './components/news/HackerNews';
-// import HackerNewsWithReducer from './components/news/HackerNewsWithReducer';
-// import Photos from './components/photo/Photos';
-// import CardStyled from './components/card/Card';
-// import CardStyled2 from './components/card/CardStyled2';
-// import CardList from './components/card/CardList';
-// import { GlobalStyles } from './GlobalStyles';
-// import { ThemeProvider } from 'styled-components';
-// import CardTailwind from './components/card/CardTailwind';
-// import Game from './components/tictactoe/Game';
-
-// const theme = {
-//    colors: {
-//       blue: '#2979ff',
-//    },
-//    black: '#333333',
-// };
+import { useState } from 'react';
+import ModalBase from './components/modal/ModalBase';
+import ModalAdvanced from './components/modal/ModalAdvanced';
 
 const App = () => {
+   const [openModal, setOpenModal] = useState(false);
+   const [openModalBase, setOpenModalBase] = useState(false);
    return (
-      //Styled Component
-      // <ThemeProvider theme={theme}>
-      //    <GlobalStyles />
-      //    <CardList>
-      //       <CardStyled2 secondary={true} />
-      //    </CardList>
-      // </ThemeProvider>
-
-      //Tailwind
-      // <CardList>
-      //    <CardTailwind primary={true} fontSize="text-xl" />
-      // </CardList>
-
-      // <Game />
-
-      // <Photos />
-      // <HackerNews />
-      // <HackerNewsWithReducer />
-
-      // <ModalApp />
-      <div className="p-16 mt-16 ml-16">
-         <Tooltip text="Hover me">This is a tooltip content</Tooltip>
+      <div className="p-5">
+         <button onClick={() => setOpenModalBase(true)} className="p-5 text-center text-white bg-blue-400 rounded-lg">
+            Open modal base
+         </button>
+         <button onClick={() => setOpenModal(true)} className="p-5 ml-5 text-center text-white bg-blue-400 rounded-lg">
+            Open modal
+         </button>
+         <ModalBase visible={openModalBase} onClose={() => setOpenModalBase(false)}>
+            <div className="p-10 bg-white rounded-lg w-full max-w-[320px]">
+               Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed facilis, deleniti veritatis ipsum suscipit natus, minus asperiores
+               accusantium recusandae atque minima velit dolorum vero totam nam aliquam illo excepturi voluptatibus.
+            </div>
+         </ModalBase>
+         <ModalAdvanced
+            bodyClassName="w-full max-w-[482px] bg-white p-10 rounded-lg"
+            visible={openModal}
+            onClose={() => setOpenModal(false)}
+            heading="Welcome back!"
+         >
+            <div className="flex flex-col gap-3 mb-5">
+               <label htmlFor="email" className="text-sm cursor-pointer">
+                  Email address
+               </label>
+               <input type="text" className="w-full text-sm leading-normal bg-[#e7ecf3] rounded-lg p-4" placeholder="Enter your email" />
+            </div>
+            <div className="flex flex-col gap-3 mb-5">
+               <label htmlFor="password" className="text-sm cursor-pointer">
+                  Password
+               </label>
+               <input type="text" className="w-full text-sm leading-normal bg-[#e7ecf3] rounded-lg p-4" placeholder="Enter your password" />
+            </div>
+            <button className="w-full p-4 text-base font-semibold text-white bg-[#316bff] rounded-lg">Sign in</button>
+         </ModalAdvanced>
       </div>
    );
 };
