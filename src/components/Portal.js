@@ -15,7 +15,7 @@ const Portal = ({
    bodyClassName = '',
    containerStyle = {},
    onClose = () => {},
-   visible = false,
+   overlay = true,
    bodyStyle = {},
    children,
 }) => {
@@ -23,9 +23,9 @@ const Portal = ({
       document.body.appendChild(portalWrapperElm);
    }, []);
    const renderContent = (
-      <div className={`fixed inset-0 z-{9999} ${containerClassName}`} style={containerStyle}>
-         <div onClick={onClose} className="absolute inset-0 bg-black overlay bg-opacity-20"></div>
-         <div className={`relative z-10 content ${bodyClassName}`} style={bodyStyle}>
+      <div className={containerClassName} style={containerStyle}>
+         {overlay && <div onClick={onClose} className="absolute inset-0 bg-black overlay bg-opacity-20"></div>}
+         <div className={bodyClassName} style={bodyStyle}>
             {children}
          </div>
       </div>
@@ -41,6 +41,7 @@ Portal.propTypes = {
    onClose: PropTypes.func,
    visible: PropTypes.bool.isRequired,
    children: PropTypes.node,
+   overlay: PropTypes.bool,
 };
 
 export default Portal;
