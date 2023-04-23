@@ -1,51 +1,44 @@
-import { useState } from 'react';
-import ModalBase from './components/modal/ModalBase';
-import ModalAdvanced from './components/modal/ModalAdvanced';
-import TooltipAdvanced from './components/tooltip/TooltipAdvanced';
+import HeaderMain from './components/HeaderMain';
+import CartList from './components/gallery/CartList';
+import PhotoList from './components/gallery/PhotoList';
+import { AuthProvider } from './contexts/authContext';
+import { CountProvider, useCount } from './contexts/countContext';
+import { GalleryProvider } from './contexts/galleryContext';
+
+function CountDisplay() {
+   const [count] = useCount();
+   return <div>The count is: {count}</div>;
+}
+
+function Counter() {
+   const [, setCount] = useCount();
+   const increment = () => setCount((count) => count + 1);
+
+   return (
+      <button onClick={increment} className="p-4 rounded-lg text-white font-semibold bg-purple-500">
+         Increment count
+      </button>
+   );
+}
 
 const App = () => {
-   const [openModal, setOpenModal] = useState(false);
-   const [openModalBase, setOpenModalBase] = useState(false);
    return (
-      <div className="p-5 flex justify-center items-center h-screen">
-         <button onClick={() => setOpenModalBase(true)} className="p-5 text-center text-white bg-blue-400 rounded-lg">
-            Open modal base
-         </button>
-         <button onClick={() => setOpenModal(true)} className="p-5 ml-5 text-center text-white bg-blue-400 rounded-lg">
-            Open modal
-         </button>
-         <ModalBase visible={openModalBase} onClose={() => setOpenModalBase(false)}>
-            <div className="p-10 bg-white rounded-lg w-full max-w-[320px]">
-               <TooltipAdvanced title="tooltip">This is a tooltip</TooltipAdvanced>
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed facilis, deleniti veritatis ipsum suscipit natus, minus asperiores
-               accusantium recusandae atque minima velit dolorum vero totam nam aliquam illo excepturi voluptatibus.
-            </div>
-         </ModalBase>
-         <ModalAdvanced
-            bodyClassName="w-full max-w-[482px] bg-white p-10 rounded-lg"
-            visible={openModal}
-            onClose={() => setOpenModal(false)}
-            heading="Welcome back!"
-         >
-            <div className="flex flex-col gap-3 mb-5">
-               <label htmlFor="email" className="text-sm cursor-pointer">
-                  Email address
-               </label>
-               <input type="text" className="w-full text-sm leading-normal bg-[#e7ecf3] rounded-lg p-4" placeholder="Enter your email" />
-            </div>
-            <div className="flex flex-col gap-3 mb-5">
-               <label htmlFor="password" className="text-sm cursor-pointer">
-                  Password
-               </label>
-               <input type="text" className="w-full text-sm leading-normal bg-[#e7ecf3] rounded-lg p-4" placeholder="Enter your password" />
-            </div>
-            <button className="w-full p-4 text-base font-semibold text-white bg-[#316bff] rounded-lg">Sign in</button>
-         </ModalAdvanced>
+      <>
+         <AuthProvider>
+            <HeaderMain />
+            <GalleryProvider>
+               <PhotoList />
+               <CartList />
+            </GalleryProvider>
+         </AuthProvider>
 
-         <div className="inline-block ml-5">
-            <TooltipAdvanced title="Tooltip">This is a tooltip</TooltipAdvanced>
+         <div className="p-5 flex items-center justify-center gap-x-5">
+            <CountProvider>
+               <CountDisplay />
+               <Counter />
+            </CountProvider>
          </div>
-      </div>
+      </>
    );
 };
 
