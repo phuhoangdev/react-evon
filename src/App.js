@@ -25,8 +25,8 @@ const App = () => {
    return (
       <>
          <AuthProvider>
-            <HeaderMain />
             <GalleryProvider>
+               <HeaderMain />
                <PhotoList />
                <CartList />
             </GalleryProvider>
